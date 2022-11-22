@@ -76,7 +76,7 @@ void AVL::TraverseInOrderInternal(const NodeAVL *node) const
 	if (node != nullptr)
 	{
 		TraverseInOrderInternal(node->GetLeft());
-		std::cout << node->GetData()->getKey() << endl;
+		std::cout << node->GetID() << endl;
 		TraverseInOrderInternal(node->GetRight());
 	}
 }

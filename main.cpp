@@ -14,6 +14,7 @@
 #include <iostream>
 #include "AVL.h"
 #include "leituraCSV.h"
+#include <string.h>
 
 #include <locale.h>
 
@@ -25,10 +26,8 @@ int main()
 
     leituraCSV(tree);
 
-    cout << tree->GetRoot()->GetID();
-
     int option;
-    string x;
+    string x, nome;
 
     do
     {
@@ -50,20 +49,21 @@ int main()
         case 1:
         {
             cout << "\n Informe o alimento a ser excluído -> ";
-            cin >> x;
-            tree->Remove(x);
+            cin >> nome;
+            tree->Remove(nome);
             break;
         }
         case 2:
         {
-            cout << "\n Imprimindo em ordem...";
+            cout << "\n Imprimindo em ordem...\n";
             tree->TraverseInOrder();
             break;
         }
         case 3:
         {
-            // cout << "\n Imprimindo em pr�-ordem...";
-            // tree.preOrder(tree.getSource());
+            cout << "\n Procura-se...";
+            cin >> x;
+            cout << tree->Search(x);
             break;
         }
         case 4:

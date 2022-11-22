@@ -56,12 +56,12 @@ void leituraCSV(AVL *arvore)
             getline(csvFile, vitaminC, ';');
             getline(csvFile, calcium, ';');
             getline(csvFile, iron, ';');
-            getline(csvFile, foodType, ';');
+            getline(csvFile, foodType);
 
             Alimentos *alimento = new Alimentos(key, stof(calories), stof(caloriesFromFat), stof(totalFatG), stof(totalfatDV), stof(sodiumG), stof(sodiumDV), stof(potassiumG), stof(potassiumDV), stof(totalCarbG), stof(totalCarbDV), stof(dietaryFiberG), stof(dietaryFiberDV), stof(sugars), stof(protein), stof(vitaminA), stof(vitaminC), stof(calcium), stof(iron), foodType);
 
             // adicionar na árvore
-            arvore->Insert(alimento->getKey(), alimento);
+            arvore->Insert(key, alimento);
         }
         csvFile.close();
     }
