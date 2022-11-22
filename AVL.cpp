@@ -81,6 +81,40 @@ void AVL::TraverseInOrderInternal(const NodeAVL *node) const
 	}
 }
 
+void AVL::PreencheArquivo(ostream &arquivoAux) const
+{
+	PreencheArquivoInternal(m_Root, arquivoAux);
+}
+
+void AVL::PreencheArquivoInternal(const NodeAVL *node, ostream &arquivoAux) const
+{
+	if (node != nullptr)
+	{
+		PreencheArquivoInternal(node->GetLeft(), arquivoAux);
+		arquivoAux << node->GetData()->getKey() << ';';
+		arquivoAux << node->GetData()->getCalories() << ';';
+		arquivoAux << node->GetData()->getCaloriesFromFat() << ';';
+		arquivoAux << node->GetData()->getTotalFatG() << ';';
+		arquivoAux << node->GetData()->getTotalFatDV() << ';';
+		arquivoAux << node->GetData()->getSodiumG() << ';';
+		arquivoAux << node->GetData()->getSodiumDV() << ';';
+		arquivoAux << node->GetData()->getPotassiumG() << ';';
+		arquivoAux << node->GetData()->getPotassiumDV() << ';';
+		arquivoAux << node->GetData()->getTotalCarbG() << ';';
+		arquivoAux << node->GetData()->getTotalCarbDV() << ';';
+		arquivoAux << node->GetData()->getDietaryFiberG() << ';';
+		arquivoAux << node->GetData()->getDietaryFiberDV() << ';';
+		arquivoAux << node->GetData()->getSugars() << ';';
+		arquivoAux << node->GetData()->getProtein() << ';';
+		arquivoAux << node->GetData()->getVitaminA() << ';';
+		arquivoAux << node->GetData()->getVitaminC() << ';';
+		arquivoAux << node->GetData()->getCalcium() << ';';
+		arquivoAux << node->GetData()->getIron() << ';';
+		arquivoAux << node->GetData()->getFoodType() << endl;
+		PreencheArquivoInternal(node->GetRight(), arquivoAux);
+	}
+}
+
 void AVL::TraversePreOrder() const
 {
 	TraversePreOrderInternal(m_Root);

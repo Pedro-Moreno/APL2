@@ -2,8 +2,7 @@
 //     Faculdade de Computação e Informática
 //     Estrutura de Dados II
 //     Professor: Jean M. Laine
-//     Aplicação 1 (Parte A e B)
-//     Aplicação que ajuda a controlar as calorias e a perda de peso
+//     Aplicação 2 (Parte A e B)
 //     Alunos:
 //         - Diego Guedes de Moraes (32148127)
 //         - Erick Cauã Ferreira Gomes (32116251)
@@ -12,19 +11,27 @@
 // */
 
 #include <iostream>
+#include <fstream>
 #include "AVL.h"
 #include "leituraCSV.h"
 #include <string>
-
 #include <locale.h>
 
 using namespace std;
+
+void gravarCSV(AVL *arvore, ofstream &arquivoAux)
+{
+    arquivoAux.open("alimentos_backup.csv");
+
+    arvore->PreencheArquivo(arquivoAux);
+}
 
 int main()
 {
     AVL *tree = new AVL();
     int option;
-    string nomeAlimento, nomeArquivo, arquivoBkp;
+    string nomeAlimento, nomeArquivo;
+    ofstream arquivoBkp;
 
     cout << "Digite o nome do arquivo: " << endl;
     cin >> nomeArquivo;
@@ -65,14 +72,14 @@ int main()
         case 3:
         {
             cout << "\n Salvando informações em um arquivo CSV de Backup...";
-            arquivoBkp = "Backup.csv";
+            gravarCSV(tree, arquivoBkp);
             break;
         }
         case 4:
         {
             cout << "Carregando nova árvore";
             tree->Clear();
-            leituraCSV(tree, arquivoBkp);
+            leituraCSV(tree, "alimentos_backup.csv");
             break;
         }
 

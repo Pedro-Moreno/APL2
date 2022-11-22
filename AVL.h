@@ -18,6 +18,8 @@ public:
 	int GetDegree() const;
 	int GetHeight() const;
 
+	void PreencheArquivo(ostream &arquivoBkp) const;
+
 	void TraverseInOrder() const;
 	void TraversePreOrder() const;
 	void TraversePostOrder() const;
@@ -38,6 +40,8 @@ private:
 	void Destroy(NodeAVL *node);
 
 	int GetDegreeInternal(const NodeAVL *node) const;
+
+	void PreencheArquivoInternal(const NodeAVL *node, ostream &arquivoAux) const;
 
 	void TraverseInOrderInternal(const NodeAVL *node) const;
 	void TraversePreOrderInternal(const NodeAVL *node) const;
