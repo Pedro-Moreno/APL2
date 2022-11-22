@@ -14,7 +14,7 @@
 #include <iostream>
 #include "AVL.h"
 #include "leituraCSV.h"
-#include <string.h>
+#include <string>
 
 #include <locale.h>
 
@@ -37,8 +37,8 @@ int main()
              << "\nEntre com a opcao:"
              << "\n ----1: Remover alimento"
              << "\n ----2: Imprimir em ordem"
-             << "\n ----3: Imprimir em Pré-ordem"
-             << "\n ----4: Imprimir em Pós-ordem"
+             << "\n ----3: Salvar em um arquivo CSV"
+             << "\n ----4: Carregar novo arquivo CSV"
              << "\n ----0: Sair do programa\n"
              << "\n***********************************"
              << "\n-> ";
@@ -48,9 +48,10 @@ int main()
         {
         case 1:
         {
+            cin.ignore();
             cout << "\n Informe o alimento a ser excluído -> ";
-            cin >> nome;
-            tree->Remove(nome);
+            getline(cin, x);
+            tree->Remove(x);
             break;
         }
         case 2:
@@ -61,7 +62,7 @@ int main()
         }
         case 3:
         {
-            cout << "\n Procura-se...";
+            cout << "\n Salvando informações em um arquivo CSV...";
             cin >> x;
             cout << tree->Search(x);
             break;
