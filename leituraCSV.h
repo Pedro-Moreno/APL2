@@ -23,14 +23,13 @@
 
 using namespace std;
 
-void leituraCSV(AVL *arvore)
+void leituraCSV(AVL *arvore, string nameFile)
 {
     string key;
     string calories, caloriesFromFat, totalFatG, totalfatDV, sodiumG, sodiumDV, potassiumG, potassiumDV;
     string totalCarbG, totalCarbDV, dietaryFiberG, dietaryFiberDV, sugars, protein, vitaminA, vitaminC;
     string calcium, iron, saturatedFatDV, saturatedFatMG, cholesterolDV, cholesterolMG, foodType;
 
-    string nameFile = "teste2.CSV";
     ifstream csvFile(nameFile);
 
     if (csvFile.is_open())

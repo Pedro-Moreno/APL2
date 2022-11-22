@@ -23,11 +23,13 @@ using namespace std;
 int main()
 {
     AVL *tree = new AVL();
-
-    leituraCSV(tree);
-
     int option;
-    string x, nome;
+    string nomeAlimento, nomeArquivo, arquivoBkp;
+
+    cout << "Digite o nome do arquivo: " << endl;
+    cin >> nomeArquivo;
+
+    leituraCSV(tree, nomeArquivo);
 
     do
     {
@@ -50,8 +52,8 @@ int main()
         {
             cin.ignore();
             cout << "\n Informe o alimento a ser excluído -> ";
-            getline(cin, x);
-            tree->Remove(x);
+            getline(cin, nomeAlimento);
+            tree->Remove(nomeAlimento);
             break;
         }
         case 2:
@@ -62,15 +64,15 @@ int main()
         }
         case 3:
         {
-            cout << "\n Salvando informações em um arquivo CSV...";
-            cin >> x;
-            cout << tree->Search(x);
+            cout << "\n Salvando informações em um arquivo CSV de Backup...";
+            arquivoBkp = "Backup.csv";
             break;
         }
         case 4:
         {
-            // cout << "\n Imprimindo em p�s-ordem...";
-            // tree.posOrder(tree.getSource());
+            cout << "Carregando nova árvore";
+            tree->Clear();
+            leituraCSV(tree, arquivoBkp);
             break;
         }
 
